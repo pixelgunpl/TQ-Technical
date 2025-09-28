@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taqneeq 18.0</title>
+  
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: #222;
+      display: flex;
+      height: 100vh;
+    }
+
+     body.dark {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark .register-btn {
+      background-color: #e0e0e0;
+      color: #121212;
+    }
+    body.dark .sidebar {
+      border-right: 1px solid #333;
+    }
+    body.dark .nav a {
+      color: #e0e0e0;
+    }
+    /* Sidebar */
+    .sidebar {
+  width: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #eee;
+  justify-content: space-between;
+}
+
+.top-icons {
+  margin-bottom: auto; /* pushes content down */
+}
+
+.middle-stamp {
+  margin: auto 0; /* centers it in the sidebar */
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto; /* pushes nav to bottom */
+}
+
+    .nav a {
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+    }
+    .nav a:hover,
+    .nav a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      padding: 40px;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .register-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 20px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .main-title {
+      font-family: 'PP Mondwest', cursive;
+      font-size: 100px;
+      font-weight: normal;
+      line-height: 1.3;
+      margin: 0 0 20px 0;
+    }
+
+    .description {
+        font-family:'PP NeueBit';
+      font-size: 25px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .decor-img {
+      display: block;
+      margin: 0 auto 30px auto;
+      width: 120px;
+      border-radius: 20px;
+      transform: rotate(45deg);
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 15px;
+      margin-top: 20px;
+      display: block;
+    }
+    /* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;          /* take full width instead of fixed 150px */
+    height: auto;         /* no tall sidebar */
+    flex-direction: row;  /* turn horizontal */
+    justify-content: space-between;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+  }
+
+  /* Navigation dropdown (hidden by default) */
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px;   /* appears below top bar */
+    left: 0;
+    width: 100%;
+    background: inherit;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    z-index: 999; /* keep above other content */
+  }
+
+  .nav.show {
+    display: flex; /* show links when hamburger is clicked */
+  }
+
+  /* Hamburger visible on mobile */
+  .hamburger {
+    display: block;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+<div class="sidebar">
+  <div class="top-icons">
+    <img src="asset1.png" alt="Sunflower" width="60">
+  </div>
+  <div class="middle-stamp">
+    <img src="asset3.png" alt="City Stamp" width="100">
+  </div>
+
+  <!-- Bottom -->
+   <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <div class="nav">
+    <a href="#">About</a>
+    <a href="#">Events</a>
+    <a href="#">Competition</a>
+    <a href="#">Contact</a>
+    <a href="#">App</a>
+    <a href="#">Home</a>
+  </div>
+</div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <button class="register-btn">Register Now!</button>
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        <h1 class="main-title">Taqneeq 18.0 Is Back.</h1>
+    <p class="description">
+      Taqneeq is where aspiring tech enthusiasts, developers, and visionaries come together 
+      to compete, learn, and revolutionize the future. With a perfect blend of competitions, 
+      workshops, hackathons, and exhibitions, this year's edition promises to be bigger 
+      and better than ever before.
+    </p>
+
+    <!-- Decorative image between paragraph and landscape -->
+    <img src="asset4.png" alt="Decorative" class="decor-img">
+
+    <img src="asset2.webp" alt="Landscape" class="main-image">
+  </div>
+<script>
+  function toggleDarkMode() {
+    const body = document.body;
+    const toggleBtn = document.getElementById("darkToggle");
+
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+      toggleBtn.textContent = "☀ Light Mode";
+    } else {
+      toggleBtn.textContent = "🌙 Dark Mode";
+    }
+  }
+</script>
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav").classList.toggle("show");
+  }
+</script>
+
+</body>
+</html>
